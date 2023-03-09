@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Source\miniprojects\part1\StudyingPyQt\NaverAPISearch.ui'
+# Form implementation generated from reading ui file 'c:\Source\miniprojects\part1\StudyingPyQt\NaverAPISearch copy.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -71,5 +71,5 @@ class Ui_FrmMain(object):
         _translate = QtCore.QCoreApplication.translate
         FrmMain.setWindowTitle(_translate("FrmMain", "네이버 API 뉴스검색 앱"))
         self.groupBox.setTitle(_translate("FrmMain", "뉴스 검색"))
-        self.label.setText(_translate("FrmMain", "영화명: "))
+        self.label.setText(_translate("FrmMain", "검색어: "))
         self.btnSearch.setText(_translate("FrmMain", "검색"))
