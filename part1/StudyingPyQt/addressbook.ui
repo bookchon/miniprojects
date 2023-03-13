@@ -706,7 +706,7 @@
          </palette>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(170, 0, 0);</string>
+         <string notr="true">color: rgb(170, 0, 0); </string>
         </property>
         <property name="text">
          <string>삭제</string>
