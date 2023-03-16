@@ -27,6 +27,9 @@
         - QRCODE모듈
 
     - 컴퓨터 정보 출력
-    
+    - PyGame
 
 ## 미니 프로젝트 실습
+    - 키오스크 앱 만들기
+
+[팀 리포지토리](https://github.com/PKNU-IOT-1-TEAM)
