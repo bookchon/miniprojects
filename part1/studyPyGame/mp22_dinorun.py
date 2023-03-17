@@ -6,7 +6,7 @@ pygame.init()
 
 ASSETS = './studyPyGame/Assets/'
 SCREEN = pygame.display.set_mode((1100, 600))
-icon = pygame.image.load('./studyPyGame/dinorun.png')
+icon = pygame.image.load('./miniprojects/part1/studyPyGame/game.png')
 pygame.display.set_icon(icon)
 
 # 배경 이미지 로드
@@ -37,7 +37,6 @@ class Dino: # 공룡 클래스
         if self.dino_run:
             self.run()
         elif self.dino_duck:
-            
             self.duck()
         elif self.dino_jump:
             self.jump()
@@ -48,6 +47,7 @@ class Dino: # 공룡 클래스
             self.dino_run = False
             self.dino_duck = False
             self.dino_jump = True
+            self.dino_rect.y = self.Y_POS # 이게 없으면 공룡이 하늘로 날아감
         elif userInput[pygame.K_DOWN] and not self.dino_jump: # 수그림
             self.dino_run = False
             self.dino_duck = True
