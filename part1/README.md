@@ -31,7 +31,7 @@
 - 게임 만들기 - DinoRun
     PyGame
 
-<img src='https://raw.githubuser' width ='780'/>
+<img src='https://raw.githubusercontent.com/bookchon/miniprojects/main/part1/images/dinorun.PNG' width ='780'/>
 
 ## 미니 프로젝트 실습
     - 키오스크 앱 만들기
