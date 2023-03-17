@@ -1,23 +1,38 @@
 # dino Run
 import pygame
 import os
+import random
 
 pygame.init()
 
 ASSETS = './studyPyGame/Assets/'
-SCREEN = pygame.display.set_mode((1100, 600))
-icon = pygame.image.load('./miniprojects/part1/studyPyGame/game.png')
+SCREEN_WIDTH = 1100 # 게임 윈도우 넓이
+SCREEN = pygame.display.set_mode((SCREEN_WIDTH, 600))
+icon = pygame.image.load('./studyPyGame/game.png')
 pygame.display.set_icon(icon)
 
 # 배경 이미지 로드
 BG = pygame.image.load(os.path.join(f'{ASSETS}Other', 'Track.png'))
 
 # 공룡 이미지 로드
-RUNNING = [pygame.image.load((f'{ASSETS}Dino/DinoRun1.png'),
-                             (f'{ASSETS}Dino/DinoRun2.png'))]
-DUCKING = [pygame.image.load((f'{ASSETS}Dino/DinoDuck1.png'),
-                             (f'{ASSETS}Dino/DinoDuck2.png'))]
-JUMPING = [pygame.image.load(f'{ASSETS}Dino/DinoJump.png')]
+RUNNING = [pygame.image.load(f'{ASSETS}Dino/DinoRun1.png'),
+           pygame.image.load(f'{ASSETS}Dino/DinoRun2.png')]
+DUCKING = [pygame.image.load(f'{ASSETS}Dino/DinoDuck1.png'),
+           pygame.image.load(f'{ASSETS}Dino/DinoDuck2.png')]
+JUMPING = pygame.image.load(f'{ASSETS}Dino/DinoJump.png')
+
+# 구름 이미지
+CLOUD = pygame.image.load(f'{ASSETS}Other/Cloud.png')
+# 익룡 이미지 로드
+BIRD = [pygame.image.load(f'{ASSETS}Bird/Bird1.png'),
+        pygame.image.load(f'{ASSETS}Bird/Bird2.png')]
+# 선인장 이미지 로드 / 애니메이션을 위한 것이 아니라 선인장 종류를 세개씩 설치한 것
+LARGE_CACTUS = [pygame.image.load(f'{ASSETS}Cactus/LargeCactus1.png'),
+                pygame.image.load(f'{ASSETS}Cactus/LargeCactus2.png'),
+                pygame.image.load(f'{ASSETS}Cactus/LargeCactus3.png')]
+SMALL_CACTUS = [pygame.image.load(f'{ASSETS}Cactus/SmallCactus1.png'),
+                pygame.image.load(f'{ASSETS}Cactus/SmallCactus2.png'),
+                pygame.image.load(f'{ASSETS}Cactus/SmallCactus3.png')]
 
 class Dino: # 공룡 클래스
     X_POS = 80; Y_POS = 310; Y_POS_DUCK =  340; JUMP_VEL = 9.0
@@ -83,10 +98,97 @@ class Dino: # 공룡 클래스
     def draw(self, SCREEN) -> None:
         SCREEN.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
 
+class Cloud: # 구름 클래스
+    def __init__(self) -> None:
+        self.x = SCREEN_WIDTH + random.randint(300, 500)
+        self.y = random.randint(50, 100)
+        self.image = CLOUD
+        self.width = self.image.get_width()
+
+    def update(self) -> None:
+        self.x -= game_speed
+        if self.x < -self.width: # 화면 밖으로 벗어나면
+            self.x = SCREEN_WIDTH + random.randint(1300, 2000)
+            self.y = random.randint(50,100)
+
+    def draw(self, SCREEN) -> None:
+        SCREEN.blit(self.image, (self.x, self.y))
+
+class Obstacle: # 장애물 클래스
+    def __init__(self, image, type) -> None:
+        self.image = image
+        self.type = type
+        self.rect = self.image[self.type].get_rect()
+        self.rect.x = SCREEN_WIDTH
+
+    def update(self) -> None:
+        self.rect.x -= game_speed
+        if self.rect.x <= -self.rect.width: # 왼 쪽 화면 밖으로 벗어나면
+            obstacles.pop() # 장애물 리스트에서 하나 꺼내옴
+
+    def draw(self, SCREEN) -> None:
+        SCREEN.blit(self.image[self.type], self.rect)
+
+class Bird(Obstacle): # 장애물 클래스를 상속한 클래스
+    def __init__(self, image) -> None:
+        self.type = 0 # 새는 타입 이름이 0
+        super().__init__(image, self.type)
+        self.rect.y = 250
+        self.index = 0 # 0 이미지로 시작
+
+    def draw(self, SCREEN) -> None: # draw 재정의
+        if self.index >= 9:
+            self.index = 0
+        SCREEN.blit(self.image[self.index // 5], self.rect)
+        self.index += 1
+
+class LargeCatus(Obstacle):
+    def __init__(self, image) -> None:
+        self.type = random.randint(0, 2)
+        super().__init__(image, self.type)
+        self.rect.y = 300
+
+class SmallCatus(Obstacle):
+    def __init__(self, image) -> None:
+        self.type = random.randint(0, 2)
+        super().__init__(image, self.type)
+        self.rect.y = 325
+
 def main():
+    global game_speed, x_pos_bg, y_pos_bg, points, obstacles
+    x_pos_bg = 0
+    y_pos_bg = 380
+    points = 0 # 게임점수 0부터 시작
     run = True
     clock = pygame.time.Clock()
-    dino = Dino()
+    dino = Dino() # 공룡 객체 생성
+    cloud = Cloud() # 구름 객체 생성
+    game_speed = 14
+    obstacles = []
+
+    font = pygame.font.Font(f'{ASSETS}NanumGothicBold.ttf', 20) # 나눔 고딕으로 변경
+
+    def score(): # 함수 내 함수(점수표시)
+        global points, game_speed
+        points += 1
+        if points % 100 == 0 : # 100, 200, 300
+            game_speed += 1 # 점수가 높아지면 속도 증가
+
+        txtScore = font.render(f'SCORE : {points}', True, (83, 83, 83)) # 공룡색(회색)
+        txtRect = txtScore.get_rect()
+        txtRect.center = (1000, 40)
+        SCREEN.blit(txtScore, txtRect)
+
+    # 배경 그리기
+    def background(): # 땅바닥 update, draw 동시에 해주는 함수
+        global x_pos_bg, y_pos_bg
+        image_width = BG.get_width() # 2404
+        SCREEN.blit(BG, (x_pos_bg, y_pos_bg)) # 0, 380 먼저 그리기
+        SCREEN.blit(BG, (image_width+x_pos_bg, y_pos_bg)) # 2404+0, 380
+        if x_pos_bg <= -image_width:
+            x_pos_bg = 0
+
+            x_pos_bg
 
     while run:
         for event in pygame.event.get():
@@ -96,8 +198,28 @@ def main():
         SCREEN.fill((255, 255, 255)) # 배경 흰색
         userInput = pygame.key.get_pressed()
 
+        background()
+        score()
+
         dino.draw(SCREEN) # 공룡그리기
         dino.update(userInput)
+
+        cloud.draw(SCREEN)
+        cloud.update() # 구름이 계속 움직임 / 구름이 공룡보다 먼저 그려져야 함
+
+        if len(obstacles) == 0:
+            if random.randint(0, 2) == 0: # 작은 선인장
+                obstacles.append(SmallCatus(SMALL_CACTUS))
+            elif random.randint(0, 2) == 1: # 큰 선인장
+                obstacles.append(LargeCatus(LARGE_CACTUS))
+            elif random.randint(0, 2) == 2: # 새
+                obstacles.append(Bird(BIRD))
+
+        for obs in obstacles:
+            obs.draw(SCREEN)
+            obs.update()
+            if dino.dino_rect.colliderect(obs.rect):
+                pygame.draw.rect(SCREEN, (255, 0, 0), dino.dino_rect, 3)
 
         clock.tick(30)
         pygame.display.update() # 초당 30번 업데이트 수행
