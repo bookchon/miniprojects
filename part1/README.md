@@ -43,6 +43,7 @@
 
 - 계산기 앱
     - PyQt
+    - 16개의 signal을 1개의 slot 함수로 처리
 <img src='https://raw.githubusercontent.com/bookchon/miniprojects/main/part1/images/calculator.PNG' width ='250'/>
 
 ## 미니 프로젝트 실습
