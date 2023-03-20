@@ -30,7 +30,7 @@
 
 - 게임 만들기 - DinoRun
     - PyGame
-<img src='https://raw.githubusercontent.com/bookchon/miniprojects/main/part1/images/Pygame.PNG' width ='780'/>
+<img src='https://raw.githubusercontent.com/bookchon/miniprojects/main/part1/images/Pygame.png' width ='780'/>
 <img src='https://raw.githubusercontent.com/bookchon/miniprojects/main/part1/images/dinorun.PNG' width ='780'/>
 
 - 게임화면
@@ -39,12 +39,12 @@
         - folium
         - PyQt
             - QWebEngineView 추가
-<img src='https://raw.githubusercontent.com/bookchon/miniprojects/main/part1/images/webengineview.PNG' width ='780'/>
+<img src='https://raw.githubusercontent.com/bookchon/miniprojects/main/part1/images/webengineview.png' width ='780'/>
 
 - 계산기 앱
     - PyQt
     - 16개의 signal을 1개의 slot 함수로 처리
-<img src='https://raw.githubusercontent.com/bookchon/miniprojects/main/part1/images/calculator.PNG' width ='250'/>
+<img src='https://raw.githubusercontent.com/bookchon/miniprojects/main/part1/images/calculator.png' width ='250'/>
 
 ## 미니 프로젝트 실습
     - 키오스크 앱 만들기
