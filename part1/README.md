@@ -33,6 +33,18 @@
 <img src='https://raw.githubusercontent.com/bookchon/miniprojects/main/part1/images/Pygame.PNG' width ='780'/>
 <img src='https://raw.githubusercontent.com/bookchon/miniprojects/main/part1/images/dinorun.PNG' width ='780'/>
 
+- 게임화면
+    - 전국 대학교 위치맵
+        - Pandas
+        - folium
+        - PyQt
+            - QWebEngineView 추가
+<img src='https://raw.githubusercontent.com/bookchon/miniprojects/main/part1/images/webengineview.PNG' width ='780'/>
+
+- 계산기 앱
+    - PyQt
+<img src='https://raw.githubusercontent.com/bookchon/miniprojects/main/part1/images/calculator.PNG' width ='250'/>
+
 ## 미니 프로젝트 실습
     - 키오스크 앱 만들기
 
