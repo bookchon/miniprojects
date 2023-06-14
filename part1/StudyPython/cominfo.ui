@@ -7,13 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>325</height>
+    <height>270</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>270</height>
+   </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>400</width>
-    <height>350</height>
+    <height>270</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -25,13 +31,8 @@
      <x>10</x>
      <y>10</y>
      <width>381</width>
-     <height>141</height>
+     <height>111</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Franklin Gothic Medium</family>
-    </font>
    </property>
    <property name="title">
     <string>컴퓨터 정보</string>
@@ -40,17 +41,10 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>52</y>
-      <width>81</width>
+      <y>40</y>
+      <width>91</width>
       <height>16</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Franklin Gothic Medium</family>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">font-weight: bold;</string>
@@ -59,39 +53,27 @@
      <string>코어</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblCore">
+   <widget class="QLabel" name="lblMemory">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>52</y>
-      <width>521</width>
+      <x>110</x>
+      <y>60</y>
+      <width>261</width>
       <height>16</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Franklin Gothic Medium</family>
-     </font>
-    </property>
     <property name="text">
-     <string>코어</string>
+     <string>메모리</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>82</y>
-      <width>81</width>
+      <y>60</y>
+      <width>91</width>
       <height>16</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Franklin Gothic Medium</family>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">font-weight: bold;</string>
@@ -100,37 +82,27 @@
      <string>메모리</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblMemory">
+   <widget class="QLabel" name="lblCPU">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>82</y>
-      <width>521</width>
+      <x>110</x>
+      <y>20</y>
+      <width>261</width>
       <height>16</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Franklin Gothic Medium</family>
-     </font>
-    </property>
     <property name="text">
-     <string>메모리</string>
+     <string>CPU(속도) </string>
     </property>
    </widget>
    <widget class="QLabel" name="lblDisk">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>112</y>
-      <width>521</width>
+      <x>110</x>
+      <y>80</y>
+      <width>261</width>
       <height>16</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Franklin Gothic Medium</family>
-     </font>
     </property>
     <property name="text">
      <string>디스크</string>
@@ -140,58 +112,39 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>22</y>
-      <width>81</width>
+      <y>20</y>
+      <width>91</width>
       <height>16</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Franklin Gothic Medium</family>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>CPU(속도)</string>
+     <string>CPU(속도) </string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblCPU">
+   <widget class="QLabel" name="lblCore">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>22</y>
-      <width>521</width>
+      <x>110</x>
+      <y>40</y>
+      <width>261</width>
       <height>16</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Franklin Gothic Medium</family>
-     </font>
-    </property>
     <property name="text">
-     <string>CPU(속도)</string>
+     <string>코어</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>112</y>
-      <width>81</width>
+      <y>80</y>
+      <width>91</width>
       <height>16</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Franklin Gothic Medium</family>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">font-weight: bold;</string>
@@ -205,15 +158,10 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>157</y>
+     <y>130</y>
      <width>381</width>
-     <height>111</height>
+     <height>91</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Franklin Gothic Medium</family>
-    </font>
    </property>
    <property name="title">
     <string>네트워크 정보</string>
@@ -222,58 +170,39 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>52</y>
-      <width>81</width>
+      <y>40</y>
+      <width>91</width>
       <height>16</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Franklin Gothic Medium</family>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>외부IP</string>
+     <string>외부아이피</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblExtraNet">
+   <widget class="QLabel" name="lblNetStat">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>52</y>
-      <width>521</width>
+      <x>110</x>
+      <y>60</y>
+      <width>261</width>
       <height>16</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Franklin Gothic Medium</family>
-     </font>
-    </property>
     <property name="text">
-     <string>외부아이피</string>
+     <string>전송상태</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>82</y>
-      <width>81</width>
+      <y>60</y>
+      <width>91</width>
       <height>16</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Franklin Gothic Medium</family>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">font-weight: bold;</string>
@@ -282,63 +211,46 @@
      <string>전송상태</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblNetstat">
+   <widget class="QLabel" name="lblInnerNet">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>82</y>
-      <width>521</width>
+      <x>110</x>
+      <y>20</y>
+      <width>261</width>
       <height>16</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Franklin Gothic Medium</family>
-     </font>
-    </property>
     <property name="text">
-     <string>전송상태</string>
+     <string>내부아이피</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>22</y>
-      <width>81</width>
+      <y>20</y>
+      <width>91</width>
       <height>16</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Franklin Gothic Medium</family>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>내부IP</string>
+     <string>내부아이피</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblinnerNet">
+   <widget class="QLabel" name="lblExtraNet">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>22</y>
-      <width>521</width>
+      <x>110</x>
+      <y>40</y>
+      <width>261</width>
       <height>16</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Franklin Gothic Medium</family>
-     </font>
-    </property>
     <property name="text">
-     <string>내부아이피</string>
+     <string>외부아이피</string>
     </property>
    </widget>
   </widget>
@@ -346,7 +258,7 @@
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>280</y>
+     <y>230</y>
      <width>81</width>
      <height>31</height>
     </rect>

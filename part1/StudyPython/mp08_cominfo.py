@@ -1,7 +1,7 @@
 # mp08_comInfo.py
 import psutil
 import socket
-import requests
+import requests # pip install requests
 import re
 
 print(psutil.cpu_freq())
