@@ -19,16 +19,16 @@
 
 온습도 더미데이터 시뮬레이터
 
-<img src="https://raw.githubusercontent.com/hugoMGSung/miniprojects/main/images/smarthome_publisher.gif" width="510" />
+<img src="https://raw.githubusercontent.com/bookchon/miniprojects/main/images/smarthome_publisher.gif" width="510" />
 
 스마트홈 모니터링 앱
 
-<img src="https://raw.githubusercontent.com/hugoMGSung/miniprojects/main/images/smarthome_monitor1.gif" width="780" />
+<img src="https://raw.githubusercontent.com/bookchon/miniprojects/main/images/smarthome_monitor1.gif" width="780" />
 
 스마트홈 모니터링 시각화
 
-<img src="https://raw.githubusercontent.com/hugoMGSung/miniprojects/main/images/smarthome_monitor2.png" width="780" />
+<img src="https://raw.githubusercontent.com/bookchon/miniprojects/main/images/smarthome_monitor2.png" width="780" />
 
 스마트홈 모니터링앱 테마적용
 
-<img src="https://raw.githubusercontent.com/hugoMGSung/miniprojects/main/images/smarthome_monitor3.gif" width="780" />	
+<img src="https://raw.githubusercontent.com/bookchon/miniprojects/main/images/smarthome_monitor3.gif" width="780" />	
