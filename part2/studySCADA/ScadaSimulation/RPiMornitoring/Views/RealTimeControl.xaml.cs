@@ -1,6 +1,5 @@
 ﻿using MahApps.Metro.Controls;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using SmartHomeMonitoringApp.Logics;
 using System;
 using System.Collections.Generic;
@@ -60,22 +59,18 @@ namespace SmartHomeMonitoringApp.Views
             Debug.WriteLine(msg);
             var currSensor = JsonConvert.DeserializeObject<Dictionary<string, string>>(msg);
 
-            if (currSensor["DEV_ID"] == "IOT63") // D101H703은 사용자 DB에서 동적으로 가져와할 값
+            if (currSensor["Home_Id"] == "D101H703") // D101H703은 사용자 DB에서 동적으로 가져와할 값
             {
                 this.Invoke(() => {
-                    var dfValue = DateTime.Parse(currSensor["CURR_DT"]).ToString("yyyy-MM-dd HH:mm:ss");
+                    var dfValue = DateTime.Parse(currSensor["Sensing_DateTime"]).ToString("yyyy-MM-dd HH:mm:ss");
                     LblSensingDt.Content = $"Sensing DateTime : {dfValue}";
                 });
-                switch ("Living".ToUpper()) // CurrSensor["Room_Name"] 을 안 받기 때문에 Living으로 고정
+                switch (currSensor["Room_Name"].ToUpper())
                 {
                     case "LIVING":
                         this.Invoke(() => {
-                            var tmp = currSensor["STAT"].Split('|');
-                            var temp = tmp[0].Trim(); // trim() 공백제거
-                            var humid = tmp[1].Trim();
-
-                            LvcLivingTemp.Value = Math.Round(Convert.ToDouble(temp), 1);
-                            LvcLivingHumid.Value = Convert.ToDouble(humid);
+                            LvcLivingTemp.Value = Math.Round(Convert.ToDouble(currSensor["Temp"]), 1);
+                            LvcLivingHumid.Value = Convert.ToDouble(currSensor["Humid"]);
                         });                        
                         break;
 
@@ -105,35 +100,6 @@ namespace SmartHomeMonitoringApp.Views
                         break;
                 }
             }
-        }
-
-        private void BtnOpen_Click(object sender, RoutedEventArgs e)
-        {
-            // Json으로 서보모터 90도 오픈 한다는 데이터 생성
-            var topic = "pknu/monitor/control/";
-
-            JObject origin_data = new JObject();
-            origin_data.Add("DEV_ID", "MONITOR");
-            origin_data.Add("CURR_DT", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-            origin_data.Add("STAT", "OPEN");
-            string pub_data = JsonConvert.SerializeObject(origin_data, Formatting.Indented); // 줄 맞춰주기
-
-            Commons.MQTT_CLIENT.Publish(topic, Encoding.UTF8.GetBytes(pub_data));
-            LblDoorStat.Content = "OPEN";
-        }
-
-        private void BtnClose_Click(object sender, RoutedEventArgs e)
-        {
-            var topic = "pknu/monitor/control/";
-
-            JObject origin_data = new JObject();
-            origin_data.Add("DEV_ID", "MONITOR");
-            origin_data.Add("CURR_DT", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-            origin_data.Add("STAT", "CLOSE");
-            string pub_data = JsonConvert.SerializeObject(origin_data, Formatting.Indented); // 줄 맞춰주기
-
-            Commons.MQTT_CLIENT.Publish(topic, Encoding.UTF8.GetBytes(pub_data));
-            LblDoorStat.Content = "CLOSE";
         }
     }
 }

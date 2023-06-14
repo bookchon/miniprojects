@@ -151,15 +151,11 @@ namespace SmartHomeMonitoringApp.Views
             var currValue = JsonConvert.DeserializeObject<Dictionary<string, string>>(msg);
             if (currValue != null)
             {
-                //Debug.WriteLine(currValue["DBV_ID"]);
-                //Debug.WriteLine(currValue["TYPE"]);
-                //Debug.WriteLine(currValue["CURR_DT"]);
-                //Debug.WriteLine(currValue["STAT"]);
+                //Debug.WriteLine(currValue["Home_Id"]);
+                //Debug.WriteLine(currValue["Room_Name"]);
+                //Debug.WriteLine(currValue["Sensing_DateTime"]);
+                //Debug.WriteLine(currValue["Temp"]);
                 //Debug.WriteLine(currValue["Humid"]);
-
-                var tmp = currValue["STAT"].Split('|');
-                var temp = tmp[0].Trim(); // trim() 공백제거
-                var humid = tmp[1].Trim();
                 try
                 {
                     using (MySqlConnection conn = new MySqlConnection(Commons.MYSQL_CONNSTRING))
@@ -179,11 +175,11 @@ namespace SmartHomeMonitoringApp.Views
                                              @Humid) ";
 
                         MySqlCommand cmd = new MySqlCommand(insQuery, conn);
-                        cmd.Parameters.AddWithValue("@Home_Id", currValue["DEV_ID"]);
-                        cmd.Parameters.AddWithValue("@Room_Name", "Living");
-                        cmd.Parameters.AddWithValue("@Sensing_DateTime", currValue["CURR_DT"]);
-                        cmd.Parameters.AddWithValue("@Temp", temp);
-                        cmd.Parameters.AddWithValue("@Humid", humid);
+                        cmd.Parameters.AddWithValue("@Home_Id", currValue["Home_Id"]);
+                        cmd.Parameters.AddWithValue("@Room_Name", currValue["Room_Name"]);
+                        cmd.Parameters.AddWithValue("@Sensing_DateTime", currValue["Sensing_DateTime"]);
+                        cmd.Parameters.AddWithValue("@Temp", currValue["Temp"]);
+                        cmd.Parameters.AddWithValue("@Humid", currValue["Humid"]);
 
                         if (cmd.ExecuteNonQuery() == 1)
                         {
